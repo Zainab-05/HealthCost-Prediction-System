@@ -1,111 +1,147 @@
-<html>
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Healthcare Cost Predictor</title>
+
+```
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #1d2671, #c33764);
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        width: 420px;
+        margin: 60px auto;
+        background: white;
+        padding: 30px;
+        border-radius: 16px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-weight: 600;
+        color: #333;
+    }
+
+    label {
+        font-size: 14px;
+        font-weight: 500;
+        margin-top: 12px;
+        display: block;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        font-size: 14px;
+        outline: none;
+    }
+
+    input:focus, select:focus {
+        border-color: #6c63ff;
+    }
+
+    button {
+        width: 100%;
+        margin-top: 20px;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        background: linear-gradient(135deg, #6c63ff, #5a54d1);
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .result {
+        margin-top: 20px;
+        padding: 15px;
+        border-radius: 10px;
+        background: #f4f6ff;
+        text-align: center;
+        font-size: 18px;
+        font-weight: 500;
+        color: #333;
+    }
+
+    .emoji {
+        font-size: 20px;
+    }
+
+</style>
+```
+
+</head>
+
 <body>
-    <div class="login">
-       <h1>Student Exam Performance Indicator</h1>
-   
-       <form action="{{ url_for('predict_datapoint')}}" method="post">
-        <h1>
-            <legend>Student Exam Performance Prediction</legend>
-        </h1>
-        <div class="mb-3">
-            <label class="form-label">Gender</label>
-            <select class="form-control" name="gender" placeholder="Enter you Gender" required>
-                <option class="placeholder" selected disabled value="">Select your Gender</option>
-                <option value="male">
-                    Male
-                </option>
-                <option value="female">
-                    Female
-                </option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Race or Ethnicity</label>
-            <select class="form-control" name="ethnicity" placeholder="Enter you ethnicity" required>
-                <option class="placeholder" selected disabled value="">Select Ethnicity</option>
-                <option value="group A">
-                    Group A
-                </option>
-                <option value="group B">
-                    Group B
-                </option>
-                <option value="group C">
-                    Group C
-                </option>
-                <option value="group D">
-                    Group D
-                </option>
-                <option value="group E">
-                    Group E
-                </option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Parental Level of Education</label>
-            <select class="form-control" name="parental_level_of_education"
-                placeholder="Enter you Parent Education" required>
-                <option class="placeholder" selected disabled value="">Select Parent Education</option>
-                <option value="associate's degree">
-                    associate's degree
-                </option>
-                <option value="bachelor's degree">
-                    bachelor's degree
-                </option>
-                <option value="high school">
-                    high school
-                </option>
-                <option value="master's degree">
-                    master's degree
-                </option>
-                <option value="some college">
-                    some college
-                </option>
-                <option value="some high school">
-                    some high school
-                </option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Lunch Type</label>
-            <select class="form-control" name="lunch" placeholder="Enter you Lunch" required>
-                <option class="placeholder" selected disabled value="">Select Lunch Type</option>
-                <option value="free/reduced">
-                    free/reduced
-                </option>
-                <option value="standard">
-                    standard
-                </option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Test preparation Course</label>
-            <select class="form-control" name="test_preparation_course" placeholder="Enter you Course"
-                required>
-                <option class="placeholder" selected disabled value="">Select Test_course</option>
-                <option value="none">
-                    None
-                </option>
-                <option value="completed">
-                    Completed
-                </option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Writing Score out of 100</label>
-            <input class="form-control" type="number" name="reading_score"
-                placeholder="Enter your Reading score" min='0' max='100' />
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Reading Score out of 100</label>
-            <input class="form-control" type="number" name="writing_score"
-                placeholder="Enter your Reading Score" min='0' max='100' />
-        </div>
-        <div class="mb-3">
-            <input class="btn btn-primary" type="submit" value="Predict your Maths Score" required />
-        </div>
-    </form>
-    <h2>
-       THE  prediction is {{results}}
-    </h2>
-   <body>
+
+<div class="container">
+
+```
+<h1>💊 Healthcare Cost Predictor</h1>
+
+<form action="/predictdata" method="post">
+
+    <label>Age</label>
+    <input type="number" name="age" placeholder="Enter age" required>
+
+    <label>Sex</label>
+    <select name="sex">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+    </select>
+
+    <label>BMI</label>
+    <input type="number" step="0.1" name="bmi" placeholder="e.g. 27.5" required>
+
+    <label>Children</label>
+    <input type="number" name="children" placeholder="Number of children" required>
+
+    <label>Smoker</label>
+    <select name="smoker">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+    </select>
+
+    <label>Region</label>
+    <select name="region">
+        <option value="southeast">Southeast</option>
+        <option value="southwest">Southwest</option>
+        <option value="northeast">Northeast</option>
+        <option value="northwest">Northwest</option>
+    </select>
+
+    <button type="submit">Predict Cost</button>
+
+</form>
+
+{% if results %}
+<div class="result">
+    💰 Estimated Cost: ₹ {{ results }}
+</div>
+{% endif %}
+```
+
+</div>
+
+</body>
 </html>
