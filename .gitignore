@@ -213,4 +213,4 @@ venv/
 __pycache__/
 artifacts/
 *.pyc
-.ipynb_checkpoints/
+.ipynb_checkpoints/git rm -r --cached medicalInsurance
