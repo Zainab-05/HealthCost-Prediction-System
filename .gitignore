@@ -138,6 +138,7 @@ celerybeat.pid
 .env
 .envrc
 .venv
+.medicalInsurance
 env/
 venv/
 ENV/
@@ -205,3 +206,11 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+
+medicalInsurance/
+venv/
+__pycache__/
+artifacts/
+*.pyc
+.ipynb_checkpoints/
