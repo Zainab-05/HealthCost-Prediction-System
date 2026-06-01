@@ -1,19 +1,18 @@
-from flask import Flask,request,render_template
+from flask import Flask, request, render_template
 import pandas as pd
-import numpy as pd
+import numpy as np
 
 from sklearn.preprocessing import StandardScaler
-from src.pipelines.predict_pipeline import CustomData,PredictPipeline
+from src.pipelines.predict_pipeline import CustomData, PredictPipeline
 
-application=Flask(__name__)
-
-app=application
+application = Flask(__name__)
+app = application
 
 ##Route for a home page
 
 @app.route('/')
 def index():
-   return render_template('index.html')
+    return render_template('index.html')
 
 # @app.route('/predictdata',methods=['GET','POST'])
 # def predict_datapoint():
@@ -70,14 +69,28 @@ def predict_datapoint():
 
         except Exception as e:
 
+            error_text = str(e)
+
+            if "Age must be" in error_text:
+                user_error = "Age must be between 18 and 100."
+
+            elif "BMI must be" in error_text:
+                user_error = "BMI must be between 10 and 60."
+
+            elif "Children" in error_text:
+                user_error = "Children count must be between 0 and 10."
+
+            else:
+                user_error = "Invalid input. Please review your entries."
+
             return render_template(
-                'home.html',
-                error_message=str(e)
+               "home.html",
+               error_message=user_error
             )
 import os
 
-if __name__=="__main__":
-   app.run(
-      host="0.0.0.0",
-      port=int(os.environ.get("PORT", 5000))
-   )
+if __name__ == "__main__":
+    app.run(
+        host="0.0.0.0",
+        port=int(os.environ.get("PORT", 5000))
+    )

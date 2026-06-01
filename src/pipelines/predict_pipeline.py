@@ -40,10 +40,10 @@ class PredictPipeline:
         except Exception as e:
 
             try:
-                PredictionLogger.log_exception(
-                    features.to_dict(),
-                    str(e)
-                )
+               PredictionLogger.log_exception(
+               features.iloc[0].to_dict(),
+               str(e)
+)
             except:
                 pass
 

@@ -87,8 +87,16 @@
         font-size: 20px;
     }
 
+    .error-box{
+    margin-top:20px;
+    padding:15px;
+    border-radius:8px;
+    background:#ffe6e6;
+    color:#cc0000;
+    font-weight:600;
+    text-align:center;
+}
 </style>
-```
 
 </head>
 
@@ -96,7 +104,6 @@
 
 <div class="container">
 
-```
 <h1>💊 Healthcare Cost Predictor</h1>
 
 <form action="/predictdata" method="post">
@@ -134,13 +141,8 @@
 
 </form>
 {% if error_message %}
-<div style="
-    color: red;
-    font-size: 18px;
-    margin-top: 20px;
-    font-weight: bold;
-">
-    {{ error_message }}
+<div class="error-box">
+    ⚠ {{ error_message }}
 </div>
 {% endif %}
 
@@ -149,7 +151,7 @@
     💰 Estimated Cost: ₹ {{ results }}
 </div>
 {% endif %}
-```
+
 </div>
 
 </body>

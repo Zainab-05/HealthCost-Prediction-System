@@ -214,3 +214,4 @@ __pycache__/
 artifacts/
 *.pyc
 .ipynb_checkpoints/git rm -r --cached medicalInsurance
+logs/
